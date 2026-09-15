@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JUDGEMENT | Drift Battle</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div class="brand">JUDGEMENT</div>
+    <div class="redline"></div>
+  </header>
+
+  <main>
+    <section class="control">
+      <div class="control-title">JUDGEMENT MAKER</div>
+
+      <div class="driver-grid">
+        <div class="driver-card">
+          <h3>LEFT DRIVER</h3>
+          <label>名前<input id="leftName" value="CHENCHYIYUN"></label>
+          <label>車番<input id="leftNumber" value="595"></label>
+        </div>
+        <div class="driver-card">
+          <h3>RIGHT DRIVER</h3>
+          <label>名前<input id="rightName" value="RYUSUKEAOKI"></label>
+          <label>車番<input id="rightNumber" value="109"></label>
+        </div>
+      </div>
+
+      <div class="judge-controls">
+        <h3>JUDGE RESULT</h3>
+        <div class="judge-row" data-judge="0">
+          <span>JUDGE 1</span>
+          <button data-answer="left">LEFT</button>
+          <button data-answer="right">RIGHT</button>
+          <button data-answer="omt">ONE MORE TIME</button>
+        </div>
+        <div class="judge-row" data-judge="1">
+          <span>JUDGE 2</span>
+          <button data-answer="left">LEFT</button>
+          <button data-answer="right">RIGHT</button>
+          <button data-answer="omt">ONE MORE TIME</button>
+        </div>
+        <div class="judge-row" data-judge="2">
+          <span>JUDGE 3</span>
+          <button data-answer="left">LEFT</button>
+          <button data-answer="right">RIGHT</button>
+          <button data-answer="omt">ONE MORE TIME</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="download" class="main-btn">PNG画像を保存</button>
+        <button id="reset" class="reset-btn">リセット</button>
+      </div>
+    </section>
+
+    <section class="preview">
+      <div class="preview-head">LIVE PREVIEW</div>
+      <div class="canvas-wrap"><canvas id="canvas" width="1600" height="1200"></canvas></div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
