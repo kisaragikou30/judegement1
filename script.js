@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const answers = ["left","omt","omt"];
+const answers = ["","",""];
 
 const $ = id => document.getElementById(id);
 const value = id => $(id).value.trim();
@@ -18,7 +18,11 @@ document.querySelectorAll(".judge-row").forEach((row, i) => {
 
 function setInitialButtons(){
   document.querySelectorAll(".judge-row").forEach((row,i)=>{
-    row.querySelector(`[data-answer="${answers[i]}"]`).classList.add("active");
+    row.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
+    if(answers[i]){
+      const btn=row.querySelector(`[data-answer="${answers[i]}"]`);
+      if(btn) btn.classList.add("active");
+    }
   });
 }
 setInitialButtons();
@@ -69,7 +73,8 @@ function judge(y,n,answer){
 
   ctx.font="900 36px Arial";
   ctx.fillStyle=answer==="omt"?"#f01525":"#fff";
-  ctx.fillText(answer==="omt"?"ONE MORE TIME":answer==="left"?"LEFT WINS":"RIGHT WINS",800,y+75);
+  const label = answer==="omt" ? "ONE MORE TIME" : answer==="left" ? "LEFT WINS" : answer==="right" ? "RIGHT WINS" : "";
+  ctx.fillText(label,800,y+75);
 }
 
 function draw(){
@@ -118,7 +123,7 @@ function draw(){
   let result="WAITING FOR JUDGEMENT";
   if(left>=2) result=`${value("leftName")||"LEFT DRIVER"} WINS`;
   else if(right>=2) result=`${value("rightName")||"RIGHT DRIVER"} WINS`;
-  else if(answers.every(a=>a==="omt")) result="ONE MORE TIME";
+  else if(answers.filter(Boolean).length===3 && answers.every(a=>a==="omt")) result="ONE MORE TIME";
 
   ctx.textAlign="center";
   ctx.font="900 24px Arial";ctx.fillStyle="#777";
@@ -135,14 +140,16 @@ $("download").addEventListener("click",()=>{
 });
 
 $("reset").addEventListener("click",()=>{
-  $("leftName").value="CHENCHYIYUN";
-  $("leftNumber").value="595";
-  $("rightName").value="RYUSUKEAOKI";
-  $("rightNumber").value="109";
-  answers.splice(0,3,"left","omt","omt");
-  document.querySelectorAll(".judge-row").forEach((row,i)=>{
+  // 入力欄を完全に空にする
+  $("leftName").value="";
+  $("leftNumber").value="";
+  $("rightName").value="";
+  $("rightNumber").value="";
+
+  // JUDGE 1〜3もすべて未選択にする
+  answers.splice(0,3,"","","");
+  document.querySelectorAll(".judge-row").forEach(row=>{
     row.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
-    row.querySelector(`[data-answer="${answers[i]}"]`).classList.add("active");
   });
   draw();
 });
