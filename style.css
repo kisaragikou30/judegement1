@@ -1,0 +1,30 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#090d0f;color:#fff;font-family:Arial,"Noto Sans JP",sans-serif}
+body{min-height:100vh}
+.page{max-width:1500px;margin:auto;padding:20px}
+.top{background:#111719;border:1px solid #252b2d;border-radius:12px 12px 0 0;padding:24px 34px 0}
+.brand{font-size:clamp(42px,6vw,76px);font-weight:900;letter-spacing:4px;line-height:1}
+.redline{height:4px;background:linear-gradient(90deg,#ed1728,#ff1940);margin:22px -34px 0}
+main{display:grid;grid-template-columns:440px 1fr;gap:20px;margin-top:20px}
+.control,.preview{background:#121719;border:1px solid #272d30;border-radius:12px;padding:20px}
+.control-title,.preview-head{font-weight:900;letter-spacing:2px;font-size:20px;margin-bottom:18px}
+.driver-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.driver-card{background:#0c1112;border:1px solid #2c3335;border-radius:8px;padding:13px}
+.driver-card h3,.judge-controls h3{font-size:12px;letter-spacing:1px;color:#aaa;margin:0 0 10px}
+label{font-size:11px;color:#999;display:block;margin-top:8px}
+input{width:100%;margin-top:5px;background:#171d1f;border:1px solid #343c3f;color:#fff;border-radius:5px;padding:9px;font-size:14px}
+.judge-controls{margin-top:18px}
+.judge-row{display:grid;grid-template-columns:65px 1fr 1fr 1.5fr;gap:6px;align-items:center;margin:8px 0}
+.judge-row>span{font-size:11px;font-weight:800;color:#ddd}
+.judge-row button{border:1px solid #343b3d;background:#1a2022;color:#ddd;padding:9px 4px;border-radius:5px;font-weight:800;font-size:10px;cursor:pointer}
+.judge-row button.active{background:#e31320;border-color:#ff4d58;color:#fff;box-shadow:0 0 14px #e313204d}
+.actions{display:flex;gap:8px;margin-top:18px}
+.actions button{border:0;border-radius:6px;padding:11px 15px;font-weight:900;cursor:pointer}
+.main-btn{background:#e31320;color:#fff}
+.reset-btn{background:#292f31;color:#bbb}
+.preview{overflow:hidden}
+.preview-head{color:#aaa}
+.canvas-wrap{background:#050708;border:1px solid #22282a;border-radius:8px;overflow:auto}
+canvas{display:block;width:100%;height:auto}
+@media(max-width:1000px){main{grid-template-columns:1fr}.preview{order:-1}}
+@media(max-width:560px){.page{padding:8px}.driver-grid{grid-template-columns:1fr}.judge-row{grid-template-columns:55px 1fr 1fr}.judge-row button:last-child{grid-column:2/4}}
